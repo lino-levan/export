@@ -1,5 +1,3 @@
-
-
 export function compile(dir: string) {
   let out = ''
   const files = Deno.readDirSync(dir);

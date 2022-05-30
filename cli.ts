@@ -1,3 +1,5 @@
+import { emit } from "https://deno.land/x/emit@0.2.0/mod.ts";
+
 import { compile } from "./mod.ts";
 
 let readDir = './'
@@ -11,7 +13,20 @@ if(Deno.args[1]) {
   outFile = Deno.args[1]
 }
 
-
-const out = compile(readDir)
+let out = compile(readDir)
 
 await Deno.writeTextFile(outFile, out);
+
+// transpile ts to js
+if(outFile.endsWith('js')) {
+  const temp = './temp.ts'
+  await Deno.writeTextFile(temp, out);
+  const result = await emit(temp);
+  await Deno.remove(temp);
+
+  console.log(Object.values(result)[0])
+
+  out = Object.values(result)[0]
+
+  await Deno.writeTextFile(outFile, out);
+}

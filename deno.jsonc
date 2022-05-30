@@ -1,6 +1,8 @@
 {
   "tasks": {
-    "test": "deno test test.ts"
+    "basic": "deno run --allow-read --allow-write --allow-net --allow-env cli.ts ./test/basic ./test/temp/basic.ts",
+    "recursive": "deno run --allow-read --allow-write --allow-net --allow-env cli.ts ./test/recursive ./test/temp/recursive.ts",
+    "typescript": "deno run --allow-read --allow-write --allow-net --allow-env cli.ts ./test/typescript ./test/temp/typescript.js"
   },
   "lint": {
     "files": {

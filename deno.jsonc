@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "test": "deno test test.ts"
+  },
+  "lint": {
+    "files": {
+      "exclude": ["test/"]
+    }
+  }
+}

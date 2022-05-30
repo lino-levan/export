@@ -24,8 +24,6 @@ if(outFile.endsWith('js')) {
   const result = await emit(temp);
   await Deno.remove(temp);
 
-  console.log(Object.values(result)[0])
-
   out = Object.values(result)[0]
 
   await Deno.writeTextFile(outFile, out);
